@@ -34,4 +34,8 @@ npm run preview:local
 npm run deploy
 ```
 
-`npm run build` 會用倉庫路徑 `/-Users-kenneth-Desktop-/`；本機測 static 請用上面 `build:local`。
+正式網址要包含倉庫路徑，例如：  
+**https://kennethchan6392-hash.github.io/cantonesekidsong/**  
+只開 `https://kennethchan6392-hash.github.io`（冇子路徑）唔會載入呢個專案 → 白屏係正常。
+
+`npm run build` 會用 `vite.config.js` 入面嘅 `GH_PAGES_BASE`（必須同倉庫名一致）；本機測 static 請用 `build:local`。

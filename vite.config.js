@@ -6,7 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 // GitHub project page: https://<user>.github.io/<repo>/
 // A relative base ("./") often breaks: visiting .../repo (no trailing slash) resolves
 // ./assets/... to the site root, not the repo — JS never loads. Production must use the repo path.
-const GH_PAGES_BASE = '/-Users-kenneth-Desktop-/'
+// 必須同 GitHub 倉庫名一致：https://<user>.github.io/<repo>/
+const GH_PAGES_BASE = '/cantonesekidsong/'
 
 export default defineConfig(({ mode }) => ({
   base: mode === 'production' ? GH_PAGES_BASE : '/',
