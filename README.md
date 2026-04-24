@@ -30,12 +30,17 @@ npm run preview:local
 
 ## 部署到 GitHub Pages
 
-```bash
-npm run deploy
-```
+專案已包括 **GitHub Actions**（[.github/workflows/deploy-github-pages.yml](.github/workflows/deploy-github-pages.yml)）：每次 push `main` 會 `npm ci` → `npm run build` → 只上傳 **`dist/`**。
 
-正式網址要包含倉庫路徑，例如：  
-**https://kennethchan6392-hash.github.io/cantonesekidsong/**  
-只開 `https://kennethchan6392-hash.github.io`（冇子路徑）唔會載入呢個專案 → 白屏係正常。
+**重要（只做一次）：** 去 GitHub repo → **Settings → Pages → Build and deployment**：
 
-`npm run build` 會用 `vite.config.js` 入面嘅 `GH_PAGES_BASE`（必須同倉庫名一致）；本機測 static 請用 `build:local`。
+- **Source** 揀 **GitHub Actions**（唔好再揀「Deploy from a branch」用 `main` / `(root)`）。  
+  若果用 branch  deploy 根目錄，網站會變成直接出未建置嘅 `index.html`（入面係 `/src/main.jsx`）→ **畫面空白**。
+
+推送之後喺 **Actions** 分頁睇 workflow 是否綠燈；完成後先再開：
+
+**https://kennethchan6392-hash.github.io/cantonesekidsong/**
+
+（亦可自行用 `npm run deploy` 推到 `gh-pages` 分支；同 Pages 來源二揀一即可，避免混亂。）
+
+`npm run build` 會用 `vite.config.js` 嘅 `GH_PAGES_BASE`（須同倉庫名 `cantonesekidsong` 一致）；本機靜態預覽用 `build:local`。
