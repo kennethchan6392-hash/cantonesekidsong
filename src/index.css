@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* Inlined theme so @theme and Tailwind are processed together (v4) */
+@theme {
+  --font-sans: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
+    sans-serif;
+  --font-display: "Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
+    sans-serif;
+
+  --color-cream-50: #fff9f0;
+  --color-cream-100: #fff3e0;
+  --color-coral-300: #ffb39a;
+  --color-coral-400: #ff8a6c;
+  --color-sky-200: #b8e0ff;
+  --color-sky-400: #5eb8ff;
+  --color-mint-200: #a8f0d1;
+  --color-mint-500: #3ecf8e;
+  --color-lilac-200: #d4c4ff;
+  --color-lilac-500: #8b6fd6;
+  --color-ink-600: #3d3a45;
+  --color-ink-800: #1e1b24;
+  --color-card: #ffffff;
+  --color-card-border: rgba(30, 27, 36, 0.08);
+
+  --shadow-bubble: 0 4px 0 rgba(30, 27, 36, 0.12);
+  --shadow-sm: 0 2px 6px rgba(30, 27, 36, 0.06);
+  --shadow-card: 0 8px 24px rgba(30, 27, 36, 0.08);
+  --shadow-inner: inset 0 2px 6px rgba(30, 27, 36, 0.08);
+  --shadow-float: 0 20px 50px rgba(30, 27, 36, 0.15);
+  --radius-hero: 2rem;
+}
+
+@layer utilities {
+  @keyframes ui-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes ui-backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-ui-fade-in {
+    animation: ui-fade-in 0.3s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  }
+
+  .animate-ui-backdrop-in {
+    animation: ui-backdrop-in 0.2s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-ui-fade-in,
+    .animate-ui-backdrop-in {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply absolute left-3 top-0 z-50 -translate-y-14 rounded-2xl bg-ink-800 px-4 py-2.5;
+    @apply text-sm font-extrabold text-cream-50 shadow-bubble;
+    @apply focus:translate-y-3 focus:outline-2 focus:outline-offset-2 focus:outline-sky-400;
+  }
+}
+
+@layer base {
+  body {
+    @apply m-0 min-h-svh font-sans text-ink-800 antialiased;
+    background:
+      radial-gradient(1200px 800px at 10% 0%, rgba(255, 196, 168, 0.35) 0%, transparent 55%),
+      radial-gradient(900px 600px at 90% 20%, rgba(184, 224, 255, 0.4) 0%, transparent 50%),
+      radial-gradient(700px 500px at 50% 100%, rgba(212, 196, 255, 0.25) 0%, transparent 45%),
+      linear-gradient(165deg, var(--color-cream-50) 0%, #fff5f0 40%, #eef6ff 72%, var(--color-cream-100) 100%);
+    background-attachment: fixed;
+  }
+
+  #root {
+    @apply min-h-svh w-full;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky-400;
+  }
+}
+
+/* Selection + smooth scroll (non-theme) */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-sky-200);
+  color: var(--color-ink-800);
+}
