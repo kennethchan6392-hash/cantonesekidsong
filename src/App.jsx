@@ -1,4 +1,4 @@
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import songsData from './data/songs.json'
 import { PlayerProvider } from './context/PlayerProvider'
 import Layout from './components/Layout'
@@ -8,7 +8,7 @@ import { getRouterBasename } from './lib/routerBasename'
 
 function App() {
   return (
-    <HashRouter basename={getRouterBasename()}>
+    <BrowserRouter basename={getRouterBasename()}>
       <PlayerProvider songs={songsData}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -18,7 +18,7 @@ function App() {
           </Route>
         </Routes>
       </PlayerProvider>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
